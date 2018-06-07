@@ -1,0 +1,60 @@
+version: '2'
+networks:
+  bridge:
+    driver: bridge
+services:
+    web:
+      build:
+        context: .
+        dockerfile: vue.dockerfile
+      ports:
+        - 8100:8100
+      depends_on:
+        - flask
+      environment:
+        FLASK_URL: flask
+      command: npm run dev
+      networks:
+        - bridge
+
+    flask:
+      build:
+        context: .
+        dockerfile: flask.dockerfile
+      ports:
+        - 5000:5000
+      depends_on:
+        - mysql
+      command: python app.py
+      networks:
+        - bridge
+    init:
+      build: 
+        context: .
+        dockerfile: flask.dockerfile
+      depends_on:
+        - mysql
+      environment:
+        - FLASK_APP=manager.py
+      command:
+        - /bin/sh
+        - -c
+        - |
+          flask initdb
+      networks:
+        - bridge
+
+    mysql:
+      image: mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: test
+        MYSQL_DATABASE: test
+        MYSQL_USER: dev
+        MYSQL_PASSWORD: test
+      ports:
+        - 3306:3306
+      restart: always
+      volumes:
+        - ./mysql_data:/var/lib/mysql
+      networks:
+        - bridge
