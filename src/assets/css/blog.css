@@ -12,7 +12,7 @@ html {
 }
 .headpic {
   height: 400px;
-  background: url(/static/image.jpg) center -52px no-repeat;
+  background: url(../img/image.jpeg) center -52px no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
   position: relative;

@@ -14,8 +14,8 @@
 
   </article>
   <div class="pages">
-    <a v-if="page!=1" href="javascript:;" @click="go(page-=1)" style="float: left;">← Previous page</a>
-    <a v-if="list.length==this.pageSize" href="javascript:;" @click="go(page+=1)" style="float: right;">Next page →</a>
+    <a v-if="page!=1" href="javascript:;" @click="go_previous()" style="float: left;">← Previous page</a>
+    <a v-if="list.length==this.pageSize" href="javascript:;" @click="go_next()" style="float: right;">Next page →</a>
   </div>
 </div>
 </template>
@@ -46,6 +46,7 @@ export default {
     tag: function(oldTag, newTag) {  
         // console.log("修改前卫：" + oldTag);  
         // console.log("修改后为：" + newTag); 
+        this.page = 1
         this.getArticleList()
     }
   },
@@ -73,8 +74,13 @@ export default {
           this.set_articles(this.list)
         })
     },
-    go () {
-      // console.log(this.page)
+    go_previous () {
+      this.page = this.page - 1
+      this.getArticleList()
+
+    },
+    go_next () {
+      this.page = this.page + 1
       this.getArticleList()
 
     },

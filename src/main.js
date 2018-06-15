@@ -5,12 +5,12 @@ import App from './App'
 import router from './router'
 import store from './store'
 
-import '@/assets/css/container.css'
-import '@/assets/css/header.css'
-import '@/assets/css/blog.css'
-import '@/assets/css/side.css'
-import '@/assets/css/index.css'
-import '@/assets/css/article.css'
+import './assets/css/container.css'
+import './assets/css/header.css'
+import './assets/css/blog.css'
+import './assets/css/side.css'
+import './assets/css/index.css'
+import './assets/css/article.css'
 
 Vue.config.productionTip = false
 

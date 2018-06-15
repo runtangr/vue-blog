@@ -51,6 +51,8 @@ services:
         MYSQL_DATABASE: test
         MYSQL_USER: dev
         MYSQL_PASSWORD: test
+      command:
+        --character-set-server=utf8mb4
       ports:
         - 3306:3306
       restart: always
