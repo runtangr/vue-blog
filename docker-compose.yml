@@ -13,7 +13,14 @@ services:
         - flask
       environment:
         FLASK_URL: flask
-      command: npm run dev
+      command:
+        - /bin/sh
+        - -c
+        - |
+          npm run build 
+          npm run dev
+      volumes:
+        - ./nginx_data:/vue-blog/dist
       networks:
         - bridge
 
