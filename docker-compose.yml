@@ -18,7 +18,6 @@ services:
         - -c
         - |
           npm run build 
-          npm run dev
       volumes:
         - ./nginx_data:/vue-blog/dist
       networks:
@@ -32,7 +31,7 @@ services:
         - 5000:5000
       depends_on:
         - mysql
-      command: python app.py
+      command: gunicorn app:app --bind 0.0.0.0:5000 -w 6 -t 0
       networks:
         - bridge
     init:
