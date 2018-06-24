@@ -8,7 +8,7 @@
           </h3>   
           <div class="short-about">
           	<img src="../../static/me.jpeg" alt="我的头像">
-          	<p>改变总是好事。</p>
+          	<p>改变就是好事。</p>
           	<ul class="list-inline">       
                 <li>
                     <a target="_blank" href="https://www.zhihu.com/people/runtangr">
