@@ -11,6 +11,8 @@ import './assets/css/blog.css'
 import './assets/css/side.css'
 import './assets/css/index.css'
 import './assets/css/article.css'
+import './assets/css/about.css'
+
 
 Vue.config.productionTip = false
 

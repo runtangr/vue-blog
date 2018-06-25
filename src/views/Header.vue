@@ -18,7 +18,7 @@
               </li>
             </ul>
           </li>
-          <li class="menu-item"><router-link to="/about"><i class="fa fa-user"></i>关于</router-link></li>
+          <li class="menu-item"><router-link :to="{ name:'About'}"><i class="fa fa-user"></i>关于</router-link></li>
         </ul>
       </div>
     </nav>
@@ -29,7 +29,6 @@
 <script>
 // 实现导航条的自动显示
 import Headroom from 'headroom.js'
-import { unique } from '@/assets/js/unique'
 import {requestArticleList, requestTags} from '../api/api'
 import {mapMutations, mapState} from 'vuex'
 import axios from 'axios'

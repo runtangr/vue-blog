@@ -4,7 +4,7 @@
   		<div class="headpic">
 	      <div class="container headtitle">
 	        <div class="title">
-	          <h1>Runtangr</h1>
+	          <h1>Runtangr Blog</h1>
 	        </div>
 	      </div>
 	    </div>

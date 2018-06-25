@@ -11,8 +11,8 @@ html {
   height: 100%;
 }
 .headpic {
-  height: 400px;
-  background: url(../img/image.jpeg) center -52px no-repeat;
+  height: 500px;
+  background: url(../img/image.jpeg) center center no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
   position: relative;
@@ -48,8 +48,8 @@ html {
   color: #fff;
   font-weight: 300;
   margin: -5px 0 6px 0;
-  padding: 70px 0;
-  font-size: 50px;
+  padding: 110px 0;
+  font-size: 65px;
   font-weight: bold;
   line-height: 1;
   letter-spacing: .02em;
@@ -72,6 +72,12 @@ html {
 }
 
 .list .articles {
+  width: 55%;
+  float: left;
+  margin-left: 15%;
+}
+
+.list .about {
   width: 55%;
   float: left;
   margin-left: 15%;

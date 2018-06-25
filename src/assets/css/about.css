@@ -1,0 +1,21 @@
+blockquote >p {
+	color: gray; 
+    font-style: italic; 
+    font-size: .95em; 
+    margin: 50px 15px 20px;
+}
+blockquote {
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #e0e0e0;
+}
+.about-md>p {
+
+	font-style: normal;
+	color: #222;
+}
+
+.short-about>p {
+	margin-top: 20px;
+    margin-bottom: 10px;
+}
