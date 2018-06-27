@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const base = `http://${process.env.FLASK_URL || 'localhost'}:5000/api`
+const base = `http://www.runtangr.xyz/api`
 
 const request = (url, options={}, method='get') => {
     let key = ~['delete', 'get', 'head'].indexOf(method) ? 'params' : 'data';

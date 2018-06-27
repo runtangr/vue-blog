@@ -23,6 +23,9 @@ li.next {
     text-align: center;
     line-height: 38px;
 }
+.content-md>ul>li>a {
+  color: #575cb1;
+}
 ul>li>a {
   color: #778087;
 }

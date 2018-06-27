@@ -46,18 +46,7 @@ export default {
     this.getMessages()
   },
   methods: {
-  	shareTags(msg) {
-      this.tags = msg
-    },
-    shareTag(msg) {
-      this.tag = msg
-    },
-    getOne(msg) {
-      this.tag = msg
-    },
-    getMessages() {
-      
-    },
+  	
   }
 }
 </script>
