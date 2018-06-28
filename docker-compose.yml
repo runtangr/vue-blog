@@ -6,34 +6,20 @@ services:
     web:
       build:
         context: .
-        dockerfile: vue.dockerfile
+        dockerfile: flask.dockerfile
       ports:
         - 8100:8100
-      depends_on:
-        - flask
-      environment:
-        FLASK_URL: flask
       command:
         - /bin/sh
         - -c
         - |
-          npm run build 
+          cp local_set.tmp local_set.py
+          python app.py 
       volumes:
         - ./nginx_data:/vue-blog/dist
       networks:
         - bridge
 
-    flask:
-      build:
-        context: .
-        dockerfile: flask.dockerfile
-      ports:
-        - 5000:5000
-      depends_on:
-        - mysql
-      command: gunicorn app:app --bind 0.0.0.0:5000 -w 6 -t 0
-      networks:
-        - bridge
     init:
       build: 
         context: .
@@ -46,6 +32,7 @@ services:
         - /bin/sh
         - -c
         - |
+          cp local_set.tmp local_set.py
           flask initdb
       networks:
         - bridge

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const base = `http://www.runtangr.xyz/api`
+const base = `/api`
 
 const request = (url, options={}, method='get') => {
     let key = ~['delete', 'get', 'head'].indexOf(method) ? 'params' : 'data';

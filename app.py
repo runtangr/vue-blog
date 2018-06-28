@@ -5,12 +5,14 @@ from werkzeug.wsgi import DispatcherMiddleware
 
 import config
 from views.api import api
+from views import home
 
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(config)
 
+    app.register_blueprint(home.home_bp)
     app.wsgi_app = DispatcherMiddleware(app.wsgi_app, OrderedDict((
         ('/api', api),
     )))
@@ -27,4 +29,4 @@ def after_request(response):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=app.debug, threaded=True)
+    app.run(host='0.0.0.0', port=8100, debug=app.debug, threaded=True)
