@@ -23,6 +23,43 @@ li.next {
     text-align: center;
     line-height: 38px;
 }
+hr {
+    background: #e0e0e0;
+    height: 1px;
+    border: none;
+}
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    line-height: 1.42858;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #333;
+    background-color: #e8e8e8;
+    border-radius: 4px;
+    font-size: 0.93em;
+}
+.comment-box {
+    width: 50%;
+    margin: 0 auto;
+}
+.content-md>p {
+  margin: 30px 0;
+  font-size: 15px;
+  line-height: 1.8;
+  font-style: italic;
+  line-height: 1.7;
+  color: #778087;
+  margin: 1.5em 0;
+}
+.hashTitle>h2 {
+  padding-bottom: 10px;
+  margin: 1.5em 0 0;
+  font-size: 2em;
+  line-height: 1.75em;
+}
+
 .content-md>ul>li>a {
   color: #575cb1;
 }
