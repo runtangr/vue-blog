@@ -7,7 +7,7 @@
             <a href="">ABOUT ME</a>
           </h3>   
           <div class="short-about">
-          	<img src="../../static/me.jpeg" alt="我的头像">
+          	<img src="../assets/img/me.jpeg" alt="我的头像">
           	<p>改变就是好事。</p>
           	<ul class="list-inline">       
                 <li>
