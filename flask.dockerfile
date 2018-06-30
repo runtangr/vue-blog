@@ -1,14 +1,12 @@
 FROM python:3.6
-RUN mkdir /web_flask
+RUN mkdir /web-blog
 WORKDIR /root
 
-COPY *.py requirements.txt local_set.tmp /web_flask/
-COPY models /web_flask/models
-COPY views /web_flask/views
-COPY static /web_flask/static
-COPY templates /web_flask/templates
+COPY *.py requirements.txt local_set.tmp /web-blog/
+RUN pip install -r /web-blog/requirements.txt -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+
+COPY . /web-blog
 
 
-RUN pip install -r /web_flask/requirements.txt -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
-WORKDIR /web_flask
+WORKDIR /web-blog
 RUN ls
