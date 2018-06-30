@@ -16,7 +16,20 @@ services:
           cp local_set.tmp local_set.py
           python app.py 
       volumes:
-        - ./nginx_data:/vue-blog/dist
+        - .:/vue-blog
+      depends_on:
+        - vue
+        - mysql
+      networks:
+        - bridge
+
+    vue:
+      build: 
+        context: .
+        dockerfile: vue.dockerfile
+      volumes:
+        - .:/vue-blog
+      command: npm run build
       networks:
         - bridge
 
