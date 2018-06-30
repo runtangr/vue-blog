@@ -15,6 +15,7 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+*.pyc
 /env/
 /__pycache__/
 /mysql_data/
