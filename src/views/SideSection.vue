@@ -2,9 +2,19 @@
   <section class="secondary section">
     <div class="section">
       <div slot="sidecontent">
-      	<hr class="hidden-sm"></hr>
+        <div class="side-tag">
+          <hr class="hidden-sm"></hr>
           <h3>
-            <a href="">ABOUT ME</a>
+            <a href="/tags">TAGS</a>
+            <div class="tag-list tags-all">
+              <a v-for="tag_one in tags" v-bind:href="'/tags#' + tag_one">{{tag_one}}</a>
+            </div>
+          </h3>  
+        </div>
+        <div class="side-about">
+      	  <hr class="hidden-sm"></hr>
+          <h3>
+            <a href="/about">ABOUT ME</a>
           </h3>   
           <div class="short-about">
           	<img src="../assets/img/me.jpeg" alt="我的头像">
@@ -47,23 +57,36 @@
                 </li>
                 
             </ul>
-          </div>      
+        </div>  
+        </div>    
        </div>     
     </div>
   </section>
 </template>
 
 <script>
+import {requestTags} from '../api/api'
 
 export default {
-  data () {
+  name: 'SideSection',
+  data() {
     return {
-      list: [],
-      page: 1,
-      pageSize: 10,
-      count: 0
+      tags:[],
     }
-  }
+  },
+  methods: {
+    init() {
+      requestTags().then((res) => {
+        if (res.status == 200) {
+          
+          this.tags = res.data.tags
+        }
+      })
+    }
+  },
+  mounted() {
+  this.init()
+  } 
 }
 </script>
 

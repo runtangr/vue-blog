@@ -13,7 +13,6 @@
      <div class="article-inline">
       <li class="fa fa-calendar">{{this.article.create_at | toDate}}</li>
       <li class="fa fa-tag">{{this.article.tag}}</li>
-      <!-- <li class="fa fa-commenting">10</li> -->
     </div>
     <div class="content-md" v-html="mdHtml"></div>
   </div> 
@@ -90,8 +89,7 @@ export default {
       requestArticle(articleId).then((res) => {
       	if (res.status == 200) {
       		
-      		this.article = res.data
-      		// console.log('article:',this.article)
+      		this.article = res.data.article
       	}
       })
 

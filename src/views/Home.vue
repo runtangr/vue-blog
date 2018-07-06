@@ -27,9 +27,8 @@
 import NavHeader from '@/views/Header.vue'
 import ArticleList from '@/views/ArticleList.vue'
 import SideSection from '@/views/SideSection.vue'
-
-
 import axios from 'axios'
+
 export default {
   name: 'home',
   components: {
@@ -37,17 +36,6 @@ export default {
 	ArticleList,
 	SideSection
   },
-  data() {
-    return {
-      tag: '',
-    }
-  },
-  mouted() {
-    this.getMessages()
-  },
-  methods: {
-  	
-  }
 }
 </script>
 

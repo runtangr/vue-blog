@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const base = `/api`
+const base = ` http://0.0.0.0:8100/api`
 
 const request = (url, options={}, method='get') => {
     let key = ~['delete', 'get', 'head'].indexOf(method) ? 'params' : 'data';
@@ -17,14 +17,8 @@ const requestArticle = id => {
 }
 
 const requestTags = () => {
-	return request(`${base}/article/tags`)
+	return request(`${base}/tags`)
 }
-// requestTagDetial
-
-
-// export {
-// 	requestArticle,
-// }
 
 export {
 	requestArticleList,
@@ -32,19 +26,3 @@ export {
 	requestTags,
 }
 
-
-// export function requestArticleList(params) {
-//   return request({
-//     url: base + '/schedule/list',
-//     method: 'get',
-//     params
-//   })
-// }
-
-// export function requestList(params) {
-//   return request({
-//     url: base + '/schedule/list',
-//     method: 'get',
-//     params
-//   })
-// }

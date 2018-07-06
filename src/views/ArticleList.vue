@@ -6,7 +6,6 @@
     <div class="article-inline">
       <li class="fa fa-calendar">{{item.create_at | toDate}}</li>
       <li class="fa fa-tag">{{item.tag}}</li>
-      <!-- <li class="fa fa-commenting">10</li> -->
     </div>
     <div class="abstract">
       <p><router-link :to="{ name:'Article', params: {id: item.article_id,  index: index}}">{{item.content}}</router-link></p>
@@ -36,20 +35,6 @@ export default {
       pageSize: 5, 
     }
   },
-  computed: {
-    ...mapState(['tag']),
-    tag () {
-      return this.$store.state.tag;
-    }
-  },
-  watch: {  
-    tag: function(oldTag, newTag) {  
-        // console.log("修改前卫：" + oldTag);  
-        // console.log("修改后为：" + newTag); 
-        this.page = 1
-        this.getArticleList()
-    }
-  },
   mounted () {
     this.getArticleList()
   },
@@ -60,11 +45,10 @@ export default {
       var param = {
         page: this.page,
         pageSize: this.pageSize,
-        tag: this.tag
       }
       requestArticleList(param).then(result=>{
 
-          let res = result.data
+          let res = result.data.articles
           this.list = res.map(article => {
             let newArticle = {}
             for (let i in article) { newArticle[i] = article[i] }
@@ -87,10 +71,3 @@ export default {
   }
 }
 </script>
-
-<style media="screen">
-.article-list {
-  padding: 20px;
-  border-radius: 10px;
-}
-</style>

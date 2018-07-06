@@ -2,12 +2,16 @@ from flask import Flask, request, jsonify
 import config
 from ext import db
 from models.core import Article
+from views.utils import ApiResult
 
 
 class ApiFlask(Flask):
 
     def make_response(self, rv):
-
+        if isinstance(rv, dict):
+            rv = ApiResult(rv)
+        if isinstance(rv, ApiResult):
+            return rv.to_response()
         return Flask.make_response(self, rv)
 
 
@@ -24,37 +28,44 @@ api = create_app()
 
 @api.route('/articles', methods=['get'])
 def articles():
-    print(request)
     page = request.args.get('page', 1, type=int)
-    page_size = request.args.get('pageSize', 5, type=int)
-    tag = request.args.get('tag', '', type=str)
+    page_size = request.args.get('pageSize', 0, type=int)
 
     query = db.session.query
-    if tag != '':
-        articles_obj = query(Article).filter(Article.tag == tag).order_by(
-            Article.article_id.desc()).offset((page - 1) * page_size).limit(page_size).all()
-    else:
+    if page_size != 0:
         articles_obj = query(Article).order_by(Article.article_id.desc()).offset(
             (page - 1) * page_size).limit(page_size).all()
-    res = [data.to_dict() for data in articles_obj]
+    else:
+        articles_dict = {}
+        articles_obj = query(Article.tag, Article.title, Article.article_id,
+                             Article.create_at, Article.brief).order_by(Article.article_id.desc()).all()
+        for article in articles_obj:
+            if article[0] in articles_dict.keys():
+                articles_dict[article[0]].append(article)  
+            else:
+                articles_dict[article[0]] = list()
+                articles_dict[article[0]].append(article)
+        return {"articles": articles_dict}
 
-    return jsonify(res)
+    articles = [data.to_dict() for data in articles_obj]
+
+    return {"articles": articles}
 
 
 @api.route('/article/<int:article_id>', methods=['get'])
 def article(article_id):
     query_obj = db.session.query(Article).filter(Article.article_id == article_id).first()
-    res = query_obj.to_dict()
+    article = query_obj.to_dict()
 
-    return jsonify(res)
+    return {'article': article}
 
 
-@api.route('/article/tags', methods=['get'])
+@api.route('/tags', methods=['get'])
 def article_tags():
-    query_obj = db.session.query(Article.tag).distinct().all()
-    res = [data[0] for data in query_obj]
+    query_obj = db.session.query(Article.tag).order_by(Article.tag.asc()).distinct().all()
+    tags = [data[0] for data in query_obj]
 
-    return jsonify(res)
+    return {'tags': tags}
 
 
 @api.after_request
