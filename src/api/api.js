@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const base = ` http://0.0.0.0:8100/api`
+const base = `/api`
 
 const request = (url, options={}, method='get') => {
     let key = ~['delete', 'get', 'head'].indexOf(method) ? 'params' : 'data';
